@@ -1,22 +1,17 @@
-name: Python CI Pipeline
+name: Docker CI Pipeline
 
 on: push
 
 jobs:
-  build:
+  docker-build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Step 1 - Get code from repo
+      - name: Step 1 - Checkout code
         uses: actions/checkout@v3
 
-      - name: Step 2 - Install Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
+      - name: Step 2 - Build Docker image
+        run: docker build -t my-python-app .
 
-      - name: Step 3 - Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Step 4 - Run Python file
-        run: python app.py
+      - name: Step 3 - Run Docker container
+        run: docker run my-python-app
