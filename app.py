@@ -1,2 +1,2 @@
-print("Hello Lalitha 👋")
+print("Hello Lalith 👋")
 print("This is running from GitHub Actions 🚀")
